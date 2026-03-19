@@ -1,0 +1,22 @@
+ALL_CHAT/*
+
+*.pyc
+*.log
+*.pid
+pid/*
+company.db
+staff/*
+
+# Attachments
+attachments
+
+# Frontend
+frontend/node_modules
+frontend/dist
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+
+failed_roles.txt
+failed_roles/*
+.DS_Store

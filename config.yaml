@@ -1,0 +1,6 @@
+resume_session_id: true # 是否恢复上次对话的 session_id
+master_staff: CEO # 管理员用户名
+compact_round: 10 # 每隔多少轮对话压缩一次对话, 0 不压缩
+staff_dir: /Users/xxx/Desktop/staff # 员工目录路径
+round_sleep: 60  # 调度心跳，单位秒
+nothing_happen_push_round: 0 # 0表示不推送

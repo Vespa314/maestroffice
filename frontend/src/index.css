@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+
+  html {
+    @apply scroll-smooth;
+    /* Prevent pull-to-refresh on mobile */
+    overscroll-behavior-y: none;
+  }
+
+  body {
+    @apply min-h-screen bg-gradient-to-br from-gray-50 via-white to-slate-50 text-slate-900 font-sans antialiased;
+    /* Prevent bounce scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
+    /* Only apply horizontal safe area insets to body */
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Mobile viewport height fix */
+  @supports (height: 100dvh) {
+    body {
+      height: 100dvh;
+    }
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2.5 rounded-lg font-medium transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700 active:scale-[0.98] shadow-sm hover:shadow-md;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-slate-700 hover:bg-gray-50 active:scale-[0.98] border border-gray-300 shadow-sm hover:shadow;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-slate-600 hover:bg-gray-100 hover:text-slate-900 active:scale-[0.98];
+  }
+
+  .input {
+    @apply w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 shadow-sm;
+  }
+
+  .card {
+    @apply bg-white rounded-xl border border-gray-200 shadow-sm;
+  }
+
+  .card-hover {
+    @apply bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300 transition-all duration-200;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E1 #F1F5F9;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: #F1F5F9;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #CBD5E1;
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: #94A3B8;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Markdown styles */
+.markdown-body {
+  @apply prose prose-slate max-w-none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  @apply font-semibold text-slate-900;
+}
+
+.markdown-body h1 {
+  @apply text-2xl;
+}
+
+.markdown-body h2 {
+  @apply text-xl;
+}
+
+.markdown-body h3 {
+  @apply text-lg;
+}
+
+.markdown-body p {
+  @apply text-slate-600;
+}
+
+.markdown-body a {
+  @apply text-blue-600 hover:text-blue-700;
+}
+
+.markdown-body code {
+  @apply bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono text-slate-800;
+}
+
+.markdown-body pre {
+  @apply bg-gray-100 p-4 rounded-lg overflow-x-auto;
+}
+
+.markdown-body pre code {
+  @apply bg-transparent p-0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  @apply list-outside;
+  margin-left: 1.5em;
+}
+
+.markdown-body ul {
+  @apply list-disc;
+}
+
+.markdown-body ol {
+  @apply list-decimal;
+}
+
+.markdown-body blockquote {
+  @apply border-l-4 border-blue-500 pl-4 italic text-slate-600;
+}
+
+.markdown-body table {
+  @apply w-full border-collapse;
+}
+
+.markdown-body th,
+.markdown-body td {
+  @apply border border-gray-300 px-4 py-2;
+}
+
+.markdown-body th {
+  @apply bg-gray-50 font-semibold text-slate-900;
+}
+
+/* Mobile-specific styles */
+@layer utilities {
+  /* Hide scrollbar for mobile */
+  .scrollbar-hide-mobile {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide-mobile::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Safe area padding for mobile notches */
+  .safe-area-padding {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Touch-friendly tap targets */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Mobile slide-over animation */
+  .slide-over-left {
+    transform: translateX(-100%);
+  }
+
+  .slide-over-left.open {
+    transform: translateX(0);
+  }
+
+  .slide-over-right {
+    transform: translateX(100%);
+  }
+
+  .slide-over-right.open {
+    transform: translateX(0);
+  }
+}
+
+/* Mobile viewport utilities */
+.mobile-h-screen {
+  height: 100vh;
+  height: 100dvh;
+}
+
+@media (max-width: 767px) {
+  /* Adjust font sizes for mobile */
+  .text-responsive-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .text-responsive-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .text-responsive-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  /* Optimize touch interactions */
+  button, a {
+    /* Remove tap highlight on iOS */
+    -webkit-tap-highlight-color: transparent;
+    /* Prevent callout on long press */
+    -webkit-touch-callout: none;
+  }
+
+  input, textarea {
+    /* Prevent zoom on focus */
+    font-size: 16px !important;
+  }
+
+  /* Modal full screen on mobile */
+  .modal-mobile {
+    @apply fixed inset-0 w-full h-full;
+  }
+}
